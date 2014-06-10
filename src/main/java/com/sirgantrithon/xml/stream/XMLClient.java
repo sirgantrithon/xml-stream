@@ -15,6 +15,7 @@ public class XMLClient extends Verticle {
 	public void start() {
 
 		HttpServer server = vertx.createHttpServer();
+		server.setCompressionSupported(true);
 
 		server.requestHandler(new Handler<HttpServerRequest>() {
 
@@ -22,9 +23,9 @@ public class XMLClient extends Verticle {
 			public void handle(final HttpServerRequest request) {
 				request.response().setChunked(true);
 				HttpClient client = vertx.createHttpClient();
-				client.setPort(8080);
-				client.setHost("localhost");
-				client.getNow("/", new Handler<HttpClientResponse>() {
+				client.setPort(80);
+				client.setHost("feeds.arstechnica.com");
+				client.getNow("/arstechnica/index?format=xml", new Handler<HttpClientResponse>() {
 
 					@Override
 					public void handle(final HttpClientResponse response) {
@@ -35,7 +36,7 @@ public class XMLClient extends Verticle {
 
 							@Override
 							public void handle(Buffer buffer) {
-								request.response().write(buffer);
+								request.response().write(buffer + "\n");
 								packetCounter.incrementAndGet();
 							}
 
