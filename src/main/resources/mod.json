@@ -1,0 +1,4 @@
+{
+  "main" : "com.sirgantrithon.xml.stream.XMLStreamServer",
+  "auto-redeploy": true
+}
