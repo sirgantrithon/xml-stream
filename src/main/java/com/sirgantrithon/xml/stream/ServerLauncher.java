@@ -6,6 +6,7 @@ public class ServerLauncher extends Verticle {
 	
 	public void start() {
 		container.deployVerticle("com.sirgantrithon.xml.stream.XMLStreamServer");
+		container.deployVerticle("com.sirgantrithon.xml.stream.XMLClient");
 	}
 
 }
