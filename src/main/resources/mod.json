@@ -1,4 +1,4 @@
 {
-  "main" : "com.sirgantrithon.xml.stream.XMLStreamServer",
+  "main" : "com.sirgantrithon.xml.stream.ServerLauncher",
   "auto-redeploy": true
 }
