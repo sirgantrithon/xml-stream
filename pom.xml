@@ -40,6 +40,12 @@
 			<version>${vertx.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>aalto-xml</artifactId>
+			<version>0.9.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
