@@ -31,18 +31,21 @@ public class XMLClient extends Verticle {
 
 						final AtomicInteger packetCounter = new AtomicInteger(0);
 
-						response.dataHandler(new Handler<Buffer>() {
+						final XMLReader xmlReader = new XMLReader(new Handler<Buffer>() {
 
 							@Override
 							public void handle(Buffer buffer) {
 								request.response().write(buffer);
 								packetCounter.incrementAndGet();
 							}
-						}).endHandler(new Handler<Void>() {
+
+						});
+						response.dataHandler(xmlReader).endHandler(new Handler<Void>() {
 
 							@Override
 							public void handle(Void nothing) {
 								System.out.println("Packets recieved: " + packetCounter.intValue());
+								xmlReader.endParsing();
 								request.response().end();
 							}
 						});
